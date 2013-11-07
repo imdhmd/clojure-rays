@@ -1,0 +1,171 @@
+(def v {:x 1, :y 2, :z 3})
+(v)
+v
+(* v 2)
+(defn normalize[v]
+  (let [factor (/ Math/sqrt(+ (* (v :x) (v :x))
+                              (* (v :y) (v :y))
+                              (* (v :z) (v :z)))
+                 1.0)]
+    {:x (* factor (v :x))
+     :y (* factor (v :y))
+     :z (* factor (v :z))}))
+(doc java.lang.Math/sqrt)
+(java.lang.Math/sqrt 3)
+(defn normalize[v]
+  (let [factor (/ (Math/sqrt(+ (* (v :x) (v :x))
+                               (* (v :y) (v :y))
+                               (* (v :z) (v :z))))
+                 1.0)]
+    {:x (* factor (v :x))
+     :y (* factor (v :y))
+     :z (* factor (v :z))}))
+(normalize {:x 1 :y 2 :z 3})
+(defn cross-product[v1 v2]
+  ({:x (- (* (v1 :y) (v2 :z)) (* (v1 :z) (v2 :y)))
+    :y (- (* (v1 :z) (v2 :x)) (* (v1 :x) (v2 :z)))
+    :z (- (* (v1 :x) (v2 :y)) (* (v1 :y) (v2 :x)))}))
+(cross-product {:x 1 :y 2 :z 3} {:x 1 :y 2 :z 3})
+{:x (- (* 2 3) (* 2 4))}
+(defn cross-product[v1 v2]
+  ({:x (- (* (v1 :y) (v2 :z)) (* (v1 :z) (v2 :y)))
+    :y (- (* (v1 :z) (v2 :x)) (* (v1 :x) (v2 :z)))
+    :z (- (* (v1 :x) (v2 :y)) (* (v1 :y) (v2 :x)))}))
+(cross-product {} {})
+(cross-product {:x 1 :y 1 :z 1} {:x 1 :y 1 :z 1})
+(cross-product {:x 1 :y 1 :z 1})
+(defn scale[v r]
+  ({:x (* (v :x) r)
+    :y (* (v :y) r)
+    :z (* (v :z) r)}))
+(scale {:x 1 :y 2 :z 3} 2)
+(scale {:x 1, :y 2, :z 3} 2)
+{:x (* ({:x 1} :x) 2)}
+(scale {:x 1, :y 2, :z 3} 2)
+{:x (* ({:x 1 :y 2} :x) 2)}
+{:x (* ({:x 1 :y 2 :z 3} :x) 2)}
+{:x (* ({:x 1 :y 2 :z 3} :x) 2) :y (* ({:x 1 :y 2 :z 3} :y) 2)}
+(defn scale[v r]
+  ({:x (* (v :x) r)}))
+(scale {:x 1} 2)
+(defn scale[v r]
+  {:x (* (v :x) r)})
+(scale {:x 1} 2)
+(defn cross-product[v1 v2]
+  {:x (- (* (v1 :y) (v2 :z)) (* (v1 :z) (v2 :y)))
+   :y (- (* (v1 :z) (v2 :x)) (* (v1 :x) (v2 :z)))
+   :z (- (* (v1 :x) (v2 :y)) (* (v1 :y) (v2 :x)))})
+(cross-product {:x 1 :y 2 :z 3} {:x 1 :y 2 :z 3})
+(defn dot-product[v1 v2]
+  {:x (* (v1 :x) (v2 :x))
+   :y (* (v1 :y) (v2 :y))
+   :z (* (v1 :z) (v2 :z))})
+(dot-product {:x 1 :y 2 :z 3} {:x 1 :y 2 :z 3})
+(doc average)
+(exit)
+(find-doc "average")
+(find-doc "avg")
+{:x -3.1f :y -16.0f :z +1.9f}
+{:x -3.1 :y -16.0 :z 1.9}
+(defn add[v1 v2]
+  {:x (+ (v1 :x) (v2 :x))
+   :y (+ (v1 :y) (v2 :y))
+   :z (+ (v1 :z) (v2 :z))})
+(defn scale[v r]
+  {:x (* (v :x) r)
+   :y (* (v :y) r)
+   :z (* (v :z) r)})
+(defn dot-product[v1 v2]
+  {:x (* (v1 :x) (v2 :x))
+   :y (* (v1 :y) (v2 :y))
+   :z (* (v1 :z) (v2 :z))})
+(defn cross-product[v1 v2]
+  {:x (- (* (v1 :y) (v2 :z)) (* (v1 :z) (v2 :y)))
+   :y (- (* (v1 :z) (v2 :x)) (* (v1 :x) (v2 :z)))
+   :z (- (* (v1 :x) (v2 :y)) (* (v1 :y) (v2 :x)))})
+(defn normalize[v]
+  (let [factor (/ (Math/sqrt(+ (* (v :x) (v :x))
+                               (* (v :y) (v :y))
+                               (* (v :z) (v :z))))
+                 1.0)]
+    {:x (* factor (v :x))
+     :y (* factor (v :y))
+     :z (* factor (v :z))}))
+(def G (normalize {:x -3.1 :y -16.0 :z 1.9}))
+G
+(def UP (scale (cross-product G {:x 0.0 :y 0.0 :z 1.0})) 0.002)
+(def UP (scale (cross-product G {:x 0.0 :y 0.0 :z 1.0}) 0.002))
+UP
+(def RIGHT (scale (normalize (cross-product G UP)) 0.002))
+RIGHT
+(def EYE_OFFSET (add G (scale (add UP RIGHT) -256.0)))
+EYE_OFFSET
+(exit)
+(type 2)
+(type 2.0)
+(type 2.0f)
+(type "2.0")
+(type type)
+(supers (type type))
+(supers (type 2))
+(doc type)
+(doc 2)
+(doc inc)
+(doc recude)
+(doc reduce)
+(meta #'type)
+(meta #'reduce)
+(meta #'inc)
+(exit)
+(doc read)
+(doc with-open)
+(use 'clojure.java.io)
+(doc reader)
+(with-open [rdr (reader "art.txt")]
+(doseq [line (line-seq rdr)]
+(println line)))
+(doc doseq)
+(doc line-seq)
+(doc with-open)
+(doc cons)
+(doc conj)
+(doc concat)
+(doc lazy-seq)
+(doc realized?)
+(with-open [rdr (reader "art.txt")]
+(doseq [line (line-seq rdr)]
+(lazy-seq line)))
+(defn load-art-from-file [art-file-path]
+  (with-open [reader (clojure.java.io/reader art-file-path)]
+    (doseq [line (line-seq reader)]
+      (lazy-seq line))))
+(println (load-art-from-file "art.txt"))
+(defn load-art-from-file [art-file-path]
+  (with-open [reader (clojure.java.io/reader art-file-path)]
+    (lazy-seq (line-seq reader))))
+(println (load-art-from-file "art.txt"))
+(defn load-art-from-file [art-file-path]
+  (with-open [reader (clojure.java.io/reader art-file-path)]
+    (line-seq reader)))
+(println (load-art-from-file "art.txt"))
+(doc into)
+(defn load-art-from-file [art-file-path]
+  (with-open [reader (clojure.java.io/reader art-file-path)]
+    (list (line-seq reader))))
+(println (load-art-from-file "art.txt"))
+(defn load-art-from-file [art-file-path]
+  (with-open [reader (clojure.java.io/reader art-file-path)]
+    (reduce (fn[l] l) [] (line-seq reader))))
+(println (load-art-from-file "art.txt"))
+(list "a" "b")
+(defn load-art-from-file [art-file-path]
+  (with-open [reader (clojure.java.io/reader art-file-path)]
+    (doall (line-seq reader))))
+(println (load-art-from-file "art.txt"))
+(def art (load-art-from-file "art.txt"))
+art
+(take 1 art)
+(take 2 art)
+(take 3 art)
+(doc split)
+(doc clojure.string/split)
